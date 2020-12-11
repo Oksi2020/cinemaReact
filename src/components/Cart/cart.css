@@ -1,0 +1,20 @@
+.cart {
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+}
+
+.addToCart {
+    background-color: #42AAFF;
+    width: 200px;
+    height: 45px;
+    color: whitesmoke;
+    margin-top: 20px;
+    border: none;
+}
+
+.timer{
+    width: 200px;
+    height: 45px;
+    text-align: center;
+}

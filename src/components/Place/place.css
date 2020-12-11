@@ -1,0 +1,27 @@
+.place {
+    width: 20px;
+    height: 35px;
+    border: 2px solid #42AAFF;
+    border-radius: 5px;
+    margin: 3px;
+    text-align: center;
+    line-height: 40px;
+    color: #bdbebd;
+}
+
+.place.active {
+    background-color: #42AAFF;
+    color: white;
+}
+.place.passive {
+    background-color: #d3d3d3;
+    border: 2px solid #d3d3d3;
+    color: #a9a9a9;
+    font-size: 1.2em;
+    text-align: center;
+    line-height: 33px;
+    font-weight: bold;
+}
+.passive::before {
+    content: "\00d7";
+}
