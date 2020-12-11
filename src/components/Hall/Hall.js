@@ -48,13 +48,26 @@ const generateConfig = ( count ) => {
 
 const Hall = () => {
   let hall = generateConfig(10);
-  // let hallConfig = useSelector(state => state.hallConfig);
-
-  let [ id, setId ]  = useState('first-hall');
-  // localStorage.setItem( id, hallConfig );
-
   let dispatch = useDispatch();
-  dispatch({type:WRITE_HALL_CONFIG, payload: hall})
+  let hallConfig = useSelector(state => state.hallConfig);
+  let savedConfig = JSON.parse(localStorage.getItem('first-hall'));
+
+  if(savedConfig&&hallConfig.length===0) {
+    dispatch({type:WRITE_HALL_CONFIG, payload: savedConfig})
+  } else {
+    if(hallConfig.length===0){
+      console.log('hello')
+      dispatch({type:WRITE_HALL_CONFIG, payload: hall})
+    } else {
+      localStorage.setItem( 'first-hall', JSON.stringify(hallConfig) );
+    }
+  }
+  
+  
+
+
+  
+
   return (
       <div className="Hall">
         <Cart />

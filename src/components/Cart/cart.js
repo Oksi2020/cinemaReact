@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { time } from 'uniqid';
 
 import { BUY_TICKETS } from '../../constants/index'
 import Ticket from '../Ticket/ticket'
@@ -9,9 +11,8 @@ import './cart.css';
 const Cart = () => {
     let hallConfig = useSelector(state => state.hallConfig);
     let sum = useSelector(state => state.sum);
-    let timer = useSelector(state => state.timer);
     let dispatch=useDispatch();
-    console.log('timer', timer)
+   
     return(
         <div className = 'cart'>
             {
@@ -40,11 +41,11 @@ const Cart = () => {
             >
                 Додати до кошика {sum} грн
             </button>
-            <div className = 'timer'>
+            {/* <div className = 'timer'>
                 {
                     timer ? (`00:${timer}`):''
                 }
-            </div>
+            </div> */}
         </div>
     )
 }

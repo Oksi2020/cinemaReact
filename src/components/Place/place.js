@@ -21,7 +21,7 @@ const Place = ( { id, className, children, active, bought }) => {
 Place.propTypes = {
     id: PropTypes.string,
     className: PropTypes.string,     
-    children: PropTypes.string, 
+    children: PropTypes.number, 
     active: PropTypes.bool,
     bought: PropTypes.bool
 }

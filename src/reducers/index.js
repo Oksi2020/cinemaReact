@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { WRITE_HALL_CONFIG, ADD_TO_CART, DELETE_FROM_CART, BUY_TICKETS } from '../constants/index';
+import { WRITE_HALL_CONFIG, ADD_TO_CART, DELETE_FROM_CART, BUY_TICKETS, REDUCE_TIMER } from '../constants/index';
 
 
 const initState = {
@@ -63,8 +63,15 @@ const reduser = (state = initState, action) => {
                 })
                 return item;
             }),
-        sum: newSum
+        sum: newSum,
+        timer: 0
         })
+        case REDUCE_TIMER:
+            console.log('hi')
+            return({
+                ...state,
+                timer: state.timer-1
+            })
         default:
             return state;
     }

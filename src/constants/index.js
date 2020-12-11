@@ -3,3 +3,5 @@ export const WRITE_HALL_CONFIG = 'WRITE_HALL_CONFIG';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const BUY_TICKETS = 'BUY_TICKETS';
+
+export const REDUCE_TIMER='REDUCE_TIMER';

@@ -24,7 +24,7 @@ const Row = ({ seatsConfig }) => {
 }
 
 Row.propTypes = {
-    seatsConfig: PropTypes.object
+    seatsConfig: PropTypes.array
 }
 
 export default Row;
