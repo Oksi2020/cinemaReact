@@ -4,15 +4,19 @@ import PropTypes from 'prop-types';
 import { ADD_TO_CART } from '../../constants';
 import './place.css';
 
+import { addToCart } from '../../actions';
+
 
 const Place = ( { id, className, children, active, bought }) => {
     let dispatch = useDispatch();
+    const addHandler = () => {
+        if(active===false && bought===false) {
+            dispatch( addToCart(id) );
+        }
+    }
+    
     return(
-        <div className = {className} onClick = {() => {
-            if(active===false && bought===false) {
-                dispatch({ type: ADD_TO_CART, payload: id}) 
-            }            
-            }}>
+        <div className = {className} onClick = {addHandler}>
             { bought?'':children }
         </div>
     )

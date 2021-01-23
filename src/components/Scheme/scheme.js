@@ -8,7 +8,6 @@ import './scheme.css';
 
 const Scheme = () => {
     const config = useSelector(state => state.hallConfig);
-
     return(
         <div className='scheme'>
             <img src = {screenImg}></img>
@@ -19,7 +18,7 @@ const Scheme = () => {
                             <Row
                                 key = {row.id} 
                                 seatsConfig = { row.seats }
-                        />
+                            />
                         )
                     })
                 }

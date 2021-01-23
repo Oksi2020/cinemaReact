@@ -1,7 +1,11 @@
 export const WRITE_HALL_CONFIG = 'WRITE_HALL_CONFIG';
 
-export const ADD_TO_CART = 'ADD_TO_CART';
+export const ADD_TO_ACTIVE = 'ADD_TO_ACTIVE';
+export const REMOVE_FROM_ACTIVE = "REMOVE_FROM_ACTIVE";
+export const CLEAR_ACTIVE = "CLEAR_ACTIVE";
+
 export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const BUY_TICKETS = 'BUY_TICKETS';
 
 export const REDUCE_TIMER='REDUCE_TIMER';
+export const UPDATE_PRICE = 'UPDATE_PRICE';

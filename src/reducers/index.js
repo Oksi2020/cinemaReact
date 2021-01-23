@@ -1,14 +1,13 @@
 import { combineReducers } from 'redux';
-import { WRITE_HALL_CONFIG, ADD_TO_CART, DELETE_FROM_CART, BUY_TICKETS, REDUCE_TIMER } from '../constants/index';
+import { WRITE_HALL_CONFIG, UPDATE_PRICE, REDUCE_TIMER, ADD_TO_ACTIVE, REMOVE_FROM_ACTIVE, CLEAR_ACTIVE } from '../constants/index';
 
 
 const initState = {
     hallConfig: [],
+    activeSeats: [],
     sum: 0, 
     timer: 0
 }
-
-let newSum = 0;
 
 const reduser = (state = initState, action) => {
     switch( action.type ) {
@@ -17,61 +16,38 @@ const reduser = (state = initState, action) => {
                 ...state,
                 hallConfig: action.payload
             })
-        case ADD_TO_CART:
-            return({
+        
+        case ADD_TO_ACTIVE: 
+            return ({
                 ...state,
-                hallConfig: state.hallConfig.map(item=>{item.seats.map(seat=> {
-                    if(seat.id==action.payload){
-                        seat.active = true;
-                        newSum+=seat.price;
-                        console.log(seat.price);
-                    }
-                    return seat;
-                    })
-                return item;
-                }),
-                sum:newSum,
-                timer: 60
-        })
-        case DELETE_FROM_CART:
-            return({
-                ...state,
-                hallConfig: state.hallConfig.map(item=>{
-                    item.seats.map(seat=> {
-                        if(seat.id==action.payload){
-                            seat.active = false
-                            newSum-=seat.price;
-                        }
-                        return seat;
-                    })
-                    return item;
-                }),
-            sum: newSum
-        })
-        case BUY_TICKETS: 
+                activeSeats: [...state.activeSeats, action.payload ]
+            })
 
-        return({
-            ...state,
-            hallConfig: state.hallConfig.map(item=>{
-                item.seats.map(seat=> {
-                    if(seat.active===true){
-                        seat.active = false;
-                        seat.bought = true;
-                        newSum=0;
-                    }
-                    return seat;
-                })
-                return item;
-            }),
-        sum: newSum,
-        timer: 0
-        })
+        case REMOVE_FROM_ACTIVE:
+            return({
+                ...state,
+                activeSeats: state.activeSeats.filter( item => item.id !== action.payload.id )
+            })
+
+        case CLEAR_ACTIVE: 
+            return({
+                ...state,
+                activeSeats: initState.activeSeats
+            })
+
+        case UPDATE_PRICE: 
+            return ({
+                ...state,
+                sum: action.payload
+            })
+
         case REDUCE_TIMER:
             console.log('hi')
             return({
                 ...state,
                 timer: state.timer-1
             })
+            
         default:
             return state;
     }
